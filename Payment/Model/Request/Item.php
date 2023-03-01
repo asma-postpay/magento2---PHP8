@@ -36,9 +36,10 @@ class Item
         return [
             'reference' => $item->getId(),
             'name' => $item->getName(),
-            'description' => substr($product->getDescription(), 0, 1024),
-            'url' => $product->getProductUrl(),
-            'image_url' => $imageHelper->init($product, 'product_base_image')->getUrl(),
+            'sku' => $item->getSku(),
+            'description' => substr($product->getDescription() ? : '', 0, 1024),
+            //'url' => $product->getProductUrl(),
+            //'image_url' => $imageHelper->init($product, 'product_base_image')->getUrl(),
             'unit_price' => ApiAdapter::decimal($item->getBasePrice()),
             'qty' => $item->getQty()
         ];
