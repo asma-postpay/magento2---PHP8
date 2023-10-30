@@ -37,7 +37,7 @@ class Item
             'reference' => $item->getId(),
             'name' => $item->getName(),
             'sku' => $item->getSku(),
-            'description' => substr($product->getDescription() ? : '', 0, 1024),
+            'description' => substr(!empty($product->getDescription() ? $product->getDescription() : "No description found" ), 0, 1024),
             //'url' => $product->getProductUrl(),
             //'image_url' => $imageHelper->init($product, 'product_base_image')->getUrl(),
             'unit_price' => ApiAdapter::decimal($item->getBasePrice()),
